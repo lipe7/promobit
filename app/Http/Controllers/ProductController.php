@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\ProductService;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected ProductService $product_service;
+
+    public function __construct(ProductService $product_service)
+    {
+        $this->product_service = $product_service;
+    }
     /**
      * Display a listing of the resource.
      *

@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\{
+    ProductController,
+    TagController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('products', ProductController::class);
+Route::resource('tags', TagController::class);

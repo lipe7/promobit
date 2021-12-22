@@ -20,7 +20,8 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        return $this->product_service->index();
+        $products = $this->product_service->index();
+        return view('products.list', compact('products'));
     }
 
     public function store(StoreProductRequest $request)

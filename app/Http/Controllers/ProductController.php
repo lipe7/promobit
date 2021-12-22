@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\StoreTagRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Services\ProductService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,7 +23,7 @@ class ProductController extends Controller
         return $this->product_service->index();
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         return $this->product_service->store($request);
     }
@@ -30,7 +33,7 @@ class ProductController extends Controller
         return $this->product_service->show($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         return $this->product_service->update($request, $id);
     }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTagRequest;
+use App\Http\Requests\UpdateTagRequest;
 use App\Services\TagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+
 
 class TagController extends Controller
 {
@@ -20,7 +23,7 @@ class TagController extends Controller
         return $this->tag_service->index();
     }
 
-    public function store(Request $request)
+    public function store(StoreTagRequest $request)
     {
         return $this->tag_service->store($request);
     }
@@ -30,7 +33,7 @@ class TagController extends Controller
         return $this->tag_service->show($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateTagRequest $request, $id)
     {
         return $this->tag_service->update($request, $id);
     }

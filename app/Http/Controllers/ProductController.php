@@ -6,16 +6,22 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\StoreTagRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Services\ProductService;
+use App\Services\TagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     protected ProductService $product_service;
+    protected TagService $tag_service;
 
-    public function __construct(ProductService $product_service)
-    {
+    public function __construct(
+        ProductService $product_service,
+        TagService $tag_service
+
+    ) {
         $this->product_service = $product_service;
+        $this->tag_service = $tag_service;
     }
 
     public function index(Request $request)
@@ -27,12 +33,12 @@ class ProductController extends Controller
     public function create()
     {
 
-        $products = $this->product_service->index();
+        $tags = $this->tag_service->index();
 
-        return view('products.create', compact('products'));
+        return view('products.create', compact('tags'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
         return $this->product_service->store($request);
     }

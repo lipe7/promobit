@@ -8,16 +8,16 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label for="product" class="form-label">Nome do Produto</label>
-                    <input type="text" class="form-control" name="product" id="product" placeholder="Nome do Produto" required>
+                    <input type="text" class="form-control" name="name" id="product" placeholder="Nome do Produto" required>
                 </div>
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag do Produto</label>
-                    <input class="form-control" name="tag" list="tagsList" id="tagLabel" placeholder="Procurar Tag" required>
-                    <datalist id="tagsList">
-                        @foreach ($products as $p)
-                        <option value="{{$p->id}}">{{$p->name}}</option>
+                    <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="tag" required>
+                        <option value="">Escolher Tag</option>
+                        @foreach ($tags as $t)
+                        <option value="{{$t->id}}">{{$t->name}}</option>
                         @endforeach
-                    </datalist>
+                    </select>
                     <div class="invalid-feedback">
                         Tag Inválida.
                     </div>
@@ -46,4 +46,8 @@
         text-align-last: right;
     }
 </style>
+
+<script type="text/javascript" src="{{ asset('js/jquery-3.6.0.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+
 @endsection('content')

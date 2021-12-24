@@ -1,11 +1,13 @@
 <head>
+
     <meta charset="utf-8">
+    <script src="{{ asset ('js/jquery-3.6.0.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css.map') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.rtl.min.css.map') }}">
-    <link rel="stylesheet" href="{{ asset('css/sidebars.css') }}">
+
+    @include('scripts.select')
+
 
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">

@@ -17,9 +17,13 @@ class ProductRepository
 
     public function create($request)
     {
-        return Product::create([
-            'name' => $request->product
+        $p = Product::create([
+            'name' => $request->name
         ]);
+
+        $p->tag()->attach($request->tag);
+
+        return $p;
     }
 
     public function read($id)

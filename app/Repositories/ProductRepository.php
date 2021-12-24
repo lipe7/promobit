@@ -18,7 +18,7 @@ class ProductRepository
     public function create($request)
     {
         return Product::create([
-            'name' => $request->name
+            'name' => $request->product
         ]);
     }
 

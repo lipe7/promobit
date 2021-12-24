@@ -3,7 +3,6 @@
 @include('layouts.head')
 
 <body>
-    <!-- @include('partials.sidebar') -->
 
     <div class="container">
 

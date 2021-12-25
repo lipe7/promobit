@@ -25,7 +25,10 @@ class TagController extends Controller
             return DataTables::of($tags)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '
+                        <a href="' . route('' . 'tags.show', $row->id) . '" class="edit btn btn-secondary btn-sm">View</a>
+                        <a href="' . route('' . 'tags.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> 
+                        <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])
@@ -48,7 +51,14 @@ class TagController extends Controller
 
     public function show($id)
     {
-        return $this->tag_service->show($id);
+        $tag =  $this->tag_service->show($id);
+        return view('tags.read', compact('tag'));
+    }
+
+    public function edit($id)
+    {
+        $tag =  $this->tag_service->edit($id);
+        return view('tags.edit', compact('tag'));
     }
 
     public function update(UpdateTagRequest $request, $id)

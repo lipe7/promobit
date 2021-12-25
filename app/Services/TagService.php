@@ -18,6 +18,11 @@ class TagService
         return $this->tag_repository->all();
     }
 
+    public function edit($id)
+    {
+        return $this->tag_repository->edit($id);
+    }
+
     public function store($request)
     {
         return $this->tag_repository->create($request);
@@ -30,7 +35,8 @@ class TagService
 
     public function update($request, $id)
     {
-        return $this->tag_repository->update($request, $id);
+        $this->tag_repository->update($request, $id);
+        return redirect()->route('tags.index')->with('mensagem', 'Editado com sucesso!');
     }
 
     public function destroy($id)

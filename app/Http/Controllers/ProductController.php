@@ -9,6 +9,7 @@ use App\Services\ProductService;
 use App\Services\TagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ProductController extends Controller
 {
@@ -27,6 +28,18 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = $this->product_service->index();
+
+        if ($request->ajax()) {
+            return Datatables::of($products)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
         return view('products.list', compact('products'));
     }
 

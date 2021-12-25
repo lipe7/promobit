@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\TagRepository;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TagService
 {
@@ -25,7 +26,11 @@ class TagService
 
     public function store($request)
     {
-        return $this->tag_repository->create($request);
+        $store = $this->tag_repository->create($request);
+
+        if ($store) {
+            Alert::success('Cadastrado', 'Tag Cadastrada com Sucesso.');
+        }
     }
 
     public function show($id)

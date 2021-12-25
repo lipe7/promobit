@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 @include('layouts.head')
+@include('sweetalert::alert')
 
 <body>
 

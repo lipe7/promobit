@@ -8,6 +8,7 @@ use App\Services\TagService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Sweet;
 
 class TagController extends Controller
 {
@@ -26,9 +27,10 @@ class TagController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     $actionBtn = '
-                        <a href="' . route('' . 'tags.show', $row->id) . '" class="edit btn btn-secondary btn-sm">View</a>
-                        <a href="' . route('' . 'tags.edit', $row->id) . '" class="edit btn btn-success btn-sm">Edit</a> 
-                        <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                        <a href="' . route('tags.show', $row->id) . '" class="edit btn btn-secondary btn-sm">Ver</a>
+                        <a href="' . route('tags.edit', $row->id) . '" class="edit btn btn-success btn-sm">Editar</a>
+                        <button  class="show_confirm edit btn btn-danger btn-sm" value="' . $row->id . '">Deletar</a>';
+
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

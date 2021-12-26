@@ -17,7 +17,7 @@
                 <a href="{{route('tags.index')}}" class="btn btn-secondary">
                     Voltar
                 </a>
-                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" class="btn btn-primary show_confirm">Salvar Alterações</button>
             </div>
 
         </form>

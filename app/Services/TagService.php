@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\TagRepository;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Helpers\AlertHelper as Sweet;
 
 class TagService
 {
@@ -28,9 +29,7 @@ class TagService
     {
         $store = $this->tag_repository->create($request);
 
-        if ($store) {
-            Alert::success('Cadastrado', 'Tag Cadastrada com Sucesso.');
-        }
+        $store ? Sweet::successInsert() : Sweet::error();
     }
 
     public function show($id)
@@ -40,7 +39,9 @@ class TagService
 
     public function update($request, $id)
     {
-        $this->tag_repository->update($request, $id);
+        $update = $this->tag_repository->update($request, $id);
+        $update ? Sweet::successEdit() : Sweet::error();
+
         return redirect()->route('tags.index')->with('mensagem', 'Editado com sucesso!');
     }
 

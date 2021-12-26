@@ -19,9 +19,9 @@
             </a>
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Tags</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Products</a></li>
+                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="{{route('tags.index')}}" class="nav-link">Tags</a></li>
+                <li class="nav-item"><a href="{{route('products.index')}}" class="nav-link">Products</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Report</a></li>
             </ul>
         </header>

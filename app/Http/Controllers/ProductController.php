@@ -52,8 +52,18 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        $products = $this->product_service->show($id);
         return view('products.read', compact('products'));
+    }
+
+    public function edit($id)
+    {
+        $products = $this->product_service->edit($id);
+        $tags = $this->tag_service->getAllTags();
+        foreach ($products->tag as $tag) {
+            $productsTag[] = $tag->id;
+        }
+
+        return view('products.edit', compact('products', 'tags', 'productsTag'));
     }
 
     public function update(UpdateProductRequest $request, $id)

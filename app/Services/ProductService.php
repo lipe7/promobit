@@ -29,6 +29,12 @@ class ProductService
         return $store;
     }
 
+    public function edit($id)
+    {
+        return $this->product_repository->edit($id);
+    }
+
+
     public function show($id)
     {
         return $this->product_repository->read($id);

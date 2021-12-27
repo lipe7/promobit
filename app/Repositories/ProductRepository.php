@@ -38,6 +38,15 @@ class ProductRepository
         return $product;
     }
 
+    public function edit($id)
+    {
+        $product = $this->getProduct($id);
+        $product->tag = $this->getTagsInfo($id);
+
+
+        return $product;
+    }
+
     public function update($request, $id)
     {
         return Product::where('id', $id)->update([
@@ -48,6 +57,14 @@ class ProductRepository
     public function delete($id)
     {
         return Product::where('id', $id)->delete();
+    }
+
+    public function getProduct()
+    {
+        return Product::select(array(
+            'id', 'name'
+        ))
+            ->first();
     }
 
     public function getTagsInfo($id)

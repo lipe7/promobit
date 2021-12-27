@@ -11,12 +11,14 @@
                     <input disabled value="{{$products->name}}" type="text" class="form-control" name="name" id="tag" placeholder="Nome da Tag" required disabled>
                 </div>
                 <div class="mb-3">
-                    <label for="tag" class="form-label">Tag do Produto</label>
-                    <select class="form-control selectpicker" multiple data-show-subtext="true" data-live-search="true" name="tag[]" required disabled>
+                    <select disabled class="form-control selectpicker" title="Escolha ao menos uma Tag" multiple data-show-subtext="true" data-live-search="true" name="tag[]" required>
                         @foreach ($products->tag as $p)
-                        <option value="{{$p->id}}">{{$p->name}}</option>
+                        <option value="{{$p->id}}" selected="true">{{$p->name}}</option>
+
                         @endforeach
                     </select>
+
+
                     <div class="invalid-feedback">
                         Tag Inválida.
                     </div>

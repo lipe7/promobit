@@ -12,7 +12,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag do Produto</label>
-                    <select class="form-control selectpicker" multiple data-show-subtext="true" data-live-search="true" name="tag[]" required>
+                    <select class="form-control selectpicker" title="Escolha ao menos uma Tag" multiple data-show-subtext="true" data-live-search="true" name="tag[]" required>
                         @foreach ($tags as $t)
                         <option value="{{$t->id}}">{{$t->name}}</option>
                         @endforeach

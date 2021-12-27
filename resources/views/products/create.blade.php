@@ -12,8 +12,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tag" class="form-label">Tag do Produto</label>
-                    <select class="form-control selectpicker" data-show-subtext="true" data-live-search="true" name="tag" required>
-                        <option value="">Escolher Tag</option>
+                    <select class="form-control selectpicker" multiple data-show-subtext="true" data-live-search="true" name="tag[]" required>
                         @foreach ($tags as $t)
                         <option value="{{$t->id}}">{{$t->name}}</option>
                         @endforeach
@@ -47,7 +46,5 @@
     }
 </style>
 
-<script type="text/javascript" src="{{ asset('js/jquery-3.6.0.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 
 @endsection('content')

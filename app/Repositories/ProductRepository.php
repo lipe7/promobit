@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Product;
+use App\Models\ProductTag;
+use App\Models\Tag;
 
 class ProductRepository
 {
@@ -21,19 +23,19 @@ class ProductRepository
             'name' => $request->name
         ]);
 
-        $p->tag()->attach($request->tag);
+        foreach ($request->tag as $tag) {
+            $p->tag()->attach($tag);
+        }
 
         return $p;
     }
 
     public function read($id)
     {
-        return Product::select(array(
-            'id',
-            'name'
-        ))
-            ->where('id', $id)
-            ->first();
+        $product = Product::find($id);
+        $product->tag = $this->getTagsInfo($product->id);
+
+        return $product;
     }
 
     public function update($request, $id)
@@ -46,5 +48,16 @@ class ProductRepository
     public function delete($id)
     {
         return Product::where('id', $id)->delete();
+    }
+
+    public function getTagsInfo($id)
+    {
+        return ProductTag::select(array(
+            't.id',
+            't.name',
+        ))
+            ->join('tag as t', 't.id', 'product_tag.tag_id')
+            ->where('product_tag.product_id', $id)
+            ->get();
     }
 }

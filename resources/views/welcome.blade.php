@@ -51,11 +51,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="form-control-label">Senha</label>
-                                                <input type="password" class="form-control" i>
+                                                <input type="password" class="form-control">
                                             </div>
 
                                             <button type="submit" class="btn btn-primary">LOGIN</button>
-
                                         </form>
                                     </div>
                                 </div>

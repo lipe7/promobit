@@ -35,7 +35,7 @@ class TagController extends Controller
     public function store(StoreTagRequest $request)
     {
         $this->tag_service->store($request);
-        return redirect()->route('tags.index')->with('mensagem', 'Cadastrado com sucesso!');
+        return redirect()->route('tags.index');
     }
 
     public function show($id)
@@ -52,7 +52,8 @@ class TagController extends Controller
 
     public function update(UpdateTagRequest $request, $id)
     {
-        return $this->tag_service->update($request, $id);
+        $this->tag_service->update($request, $id);
+        return redirect()->route('tags.index');
     }
 
     public function destroy($id)

@@ -30,14 +30,7 @@ class ProductController extends Controller
         $products = $this->product_service->index();
 
         if ($request->ajax()) {
-            return Datatables::of($products)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="{{javascript:void(0)}}" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+            return $products;
         }
 
         return view('products.list', compact('products'));
@@ -46,19 +39,21 @@ class ProductController extends Controller
     public function create()
     {
 
-        $tags = $this->tag_service->index();
+        $tags = $this->tag_service->getAllTags();
 
         return view('products.create', compact('tags'));
     }
 
     public function store(StoreProductRequest $request)
     {
-        return $this->product_service->store($request);
+        $this->product_service->store($request);
+        return redirect()->route('products.index');
     }
 
     public function show($id)
     {
-        return $this->product_service->show($id);
+        $products = $this->product_service->show($id);
+        return view('products.read', compact('products'));
     }
 
     public function update(UpdateProductRequest $request, $id)

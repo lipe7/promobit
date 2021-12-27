@@ -6,9 +6,9 @@
         <form action="{{ route('tags.store') }}" method="POST" id="tagForm">
             @csrf
             <div class="col-12">
-                <div class="mb-3">
+                <div class="mb-3 form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                     <label for="tag" class="form-label">Nome da Tag</label>
-                    <input type="text" class="form-control" name="name" id="tag" placeholder="Nome da Tag" required>
+                    <input type="text" class="form-control" name="name" id="tag" placeholder="Nome da Tag">
                 </div>
             </div>
 

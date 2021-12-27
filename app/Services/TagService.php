@@ -30,8 +30,9 @@ class TagService
     public function store($request)
     {
         $store = $this->tag_repository->create($request);
-
         $store ? Sweet::successInsert() : Sweet::error();
+
+        return $store;
     }
 
     public function show($id)
@@ -44,11 +45,16 @@ class TagService
         $update = $this->tag_repository->update($request, $id);
         $update ? Sweet::successEdit() : Sweet::error();
 
-        return redirect()->route('tags.index')->with('mensagem', 'Editado com sucesso!');
+        return $update;
     }
 
     public function destroy($id)
     {
         return $this->tag_repository->delete($id);
+    }
+
+    public function getAllTags()
+    {
+        return $this->tag_repository->all();
     }
 }

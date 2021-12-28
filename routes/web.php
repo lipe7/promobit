@@ -20,6 +20,9 @@ use App\Http\Controllers\Auth\{
 |
 */
 
+Route::get('/', function () {
+    return view('auth.login');
+});
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 // Route::get('registration', [AuthController::class, 'registration'])->name('register-user');

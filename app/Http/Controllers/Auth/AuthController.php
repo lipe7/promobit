@@ -4,17 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Helpers\AlertHelper as Sweet;
-use App\Http\Helpers\AlertHelper;
 use Illuminate\Http\Request;
-use Hash;
-use Session;
 use App\Models\User;
-use GrahamCampbell\ResultType\Success;
-use Illuminate\Contracts\Session\Session as SessionSession;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Support\Facades\Session as FacadesSession;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {

@@ -53,10 +53,6 @@
                     name: 'name'
                 },
                 {
-                    data: 'tag',
-                    name: 'tag'
-                },
-                {
                     data: 'action',
                     name: 'action',
                     orderable: true,

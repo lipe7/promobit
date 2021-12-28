@@ -18,6 +18,7 @@ class ProductService
     public function index()
     {
         $products = $this->product_repository->all();
+
         return (new DatatablesHelper('products'))->init($products);
     }
 

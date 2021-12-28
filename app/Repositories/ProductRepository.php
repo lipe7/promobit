@@ -14,6 +14,7 @@ class ProductRepository
             'id',
             'name',
         ))
+            ->with('tag')
             ->get();
     }
 
@@ -49,14 +50,26 @@ class ProductRepository
 
     public function update($request, $id)
     {
-        return Product::where('id', $id)->update([
+
+        $p = Product::find($id);
+        $p->tag()->detach();
+        foreach ($request->tag as $tag) {
+            $p->tag()->attach($tag);
+        }
+        Product::where('id', $id)->update([
             'name' => $request->name
         ]);
+
+        return $p;
     }
 
     public function delete($id)
     {
+        $p = Product::find($id);
         return Product::where('id', $id)->delete();
+        $p->tag()->detach();
+
+        return $p;
     }
 
     public function getProduct()

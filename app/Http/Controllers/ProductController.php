@@ -52,6 +52,8 @@ class ProductController extends Controller
 
     public function show($id)
     {
+        $products = $this->product_service->show($id);
+
         return view('products.read', compact('products'));
     }
 
@@ -68,7 +70,8 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, $id)
     {
-        return $this->product_service->update($request, $id);
+        $this->product_service->update($request, $id);
+        return redirect()->route('products.index');
     }
 
     public function destroy($id)

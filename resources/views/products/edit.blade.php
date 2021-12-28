@@ -3,8 +3,9 @@
 
 <body>
     <div class="row">
-        <form action="{{ route('products.store') }}" method="POST" id="productForm">
+        <form action="{{ route('products.update', $products->id) }}" method="POST" id="productForm">
             @csrf
+            @method('PUT')
             <div class="col-12">
                 <div class="mb-3">
                     <label for="product" class="form-label">Nome do Produto</label>
@@ -31,7 +32,7 @@
                 <a href="{{route('products.index')}}" class="btn btn-secondary">
                     Voltar
                 </a>
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary show_confirm">Salvar Alterações</button>
             </div>
 
         </form>

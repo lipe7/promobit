@@ -72,26 +72,25 @@ Retorno :
 
 ```
 
-[
-{
-"name" : "Tag 1",
-"qtd_products" : 2
+[{
+    "name" : "Tag 1",
+    "qtd_products" : 2
 },
 {
-"name" : "Tag 2",
-"qtd_products" : 2
+    "name" : "Tag 2",
+    "qtd_products" : 2
 },
 {
-"name" : "Tag 3",
-"qtd_products" : 1
-}
-]
+    "name" : "Tag 3",
+    "qtd_products" : 1
+}]
 
 ```
 
 `Arquivo DB `promobit.sql` na raiz do projeto.`
 
-Não foi utilizado migrations nesse projeto, para logar na aplicação segue abaixo os campos referentes ao banco localizado na raiz do projeto:
+Não foi utilizado migrations nesse projeto, 
+para logar na aplicação segue abaixo os campos referentes ao banco localizado na raiz do projeto:
 
 Index
 
@@ -102,4 +101,3 @@ password: 123456
 
 ```
 
-```

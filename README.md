@@ -92,8 +92,6 @@ Retorno :
 Não foi utilizado migrations nesse projeto, 
 para logar na aplicação segue abaixo os campos referentes ao banco localizado na raiz do projeto:
 
-```
-
 email: admin@promobit.com
 password: 123456
 

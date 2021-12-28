@@ -15,6 +15,16 @@ class TagRepository
             ->get();
     }
 
+    public function edit($id)
+    {
+        return Tag::select(array(
+            'id',
+            'name'
+        ))
+            ->where('id', $id)
+            ->first();
+    }
+
     public function create($request)
     {
         return Tag::create([

@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Repositories\TagRepository;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Helpers\AlertHelper as Sweet;
+use App\Http\Helpers\DatatablesHelper;
 
 class TagService
 {
@@ -15,12 +18,21 @@ class TagService
 
     public function index()
     {
-        return $this->tag_repository->all();
+        $tags = $this->tag_repository->all();
+        return (new DatatablesHelper('tags'))->init($tags);
+    }
+
+    public function edit($id)
+    {
+        return $this->tag_repository->edit($id);
     }
 
     public function store($request)
     {
-        return $this->tag_repository->create($request);
+        $store = $this->tag_repository->create($request);
+        $store ? Sweet::successInsert() : Sweet::error();
+
+        return $store;
     }
 
     public function show($id)
@@ -30,11 +42,19 @@ class TagService
 
     public function update($request, $id)
     {
-        return $this->tag_repository->update($request, $id);
+        $update = $this->tag_repository->update($request, $id);
+        $update ? Sweet::successEdit() : Sweet::error();
+
+        return $update;
     }
 
     public function destroy($id)
     {
         return $this->tag_repository->delete($id);
+    }
+
+    public function getAllTags()
+    {
+        return $this->tag_repository->all();
     }
 }

@@ -70,7 +70,6 @@ GROUP BY t.id;
 
 Retorno :
 
-```
 
 [{
     "name" : "Tag 1",

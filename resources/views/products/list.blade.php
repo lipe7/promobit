@@ -17,7 +17,7 @@
                     <tr>
                         <th>#</th>
                         <th>Produto</th>
-                        <th>Action</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>

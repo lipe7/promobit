@@ -17,7 +17,6 @@
                     <tr>
                         <th>#</th>
                         <th>Produto</th>
-                        <th>Tag</th>
                         <th>Action</th>
                     </tr>
                 </thead>

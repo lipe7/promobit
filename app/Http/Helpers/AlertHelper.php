@@ -22,4 +22,10 @@ class AlertHelper
     {
         return Alert::error('Erro', 'Ocorreu algum erro no processo.');
     }
+
+    public static function errorLogin()
+    {
+        return
+            Alert::toast('Dado(s) de login inválido(s).', 'error');
+    }
 }
